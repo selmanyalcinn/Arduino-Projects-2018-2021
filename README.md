@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# 🚀 Smoke-Tracker-Smart-Watch & Embedded Systems Projects
-=======
 # 🚀 Arduino-Projects-2018-2021
->>>>>>> 70083acfcaabceb94fa95671ee0b102c4858580b
 
 Welcome to my repository! Here, you'll find a **collection of my embedded systems and Arduino projects** from **2018 to 2021**, as well as my first C++ experiments, OpenCV scripts, and the **Smoke Tracker Smart Watch** project – which is supported by a patent application.
 
@@ -27,6 +23,9 @@ Python scripts using OpenCV for image processing experiments – blending comput
 
 ✅ **Patent**  
 My patent application and related documentation for the **Smoke Tracker Smart Watch** project.
+
+✅ **Arduino Saves**  
+All the Arduino sketches and code files I wrote for my projects are available here. This folder contains my complete Arduino code collection.
 
 ✅ **Smoke Tracker Smart Watch**  
 A wearable smart device aimed at helping users monitor and reduce their smoking habits. It tracks real-time data and offers insights and motivation to help users quit smoking effectively.
@@ -68,10 +67,3 @@ For questions, feedback, or collaboration, feel free to reach out:
 
 - 📧 [selmanyalcin16@gmail.com]
 - 🌐 [In progress...]
-
-<<<<<<< HEAD
----
-
-🧡 Thanks for stopping by – let’s keep building and learning together!
-=======
->>>>>>> 70083acfcaabceb94fa95671ee0b102c4858580b
