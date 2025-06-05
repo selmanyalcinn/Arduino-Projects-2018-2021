@@ -67,10 +67,3 @@ For questions, feedback, or collaboration, feel free to reach out:
 
 - 📧 [selmanyalcin16@gmail.com]
 - 🌐 [In progress...]
-
-<<<<<<< HEAD
----
-
-🧡 Thanks for stopping by – let’s keep building and learning together!
-=======
->>>>>>> 70083acfcaabceb94fa95671ee0b102c4858580b
