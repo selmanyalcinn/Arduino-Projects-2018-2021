@@ -65,6 +65,3 @@ For questions, feedback, or collaboration, feel free to reach out:
 - 📧 [selmanyalcin16@gmail.com]
 - 🌐 [In progress...]
 
----
-
-🧡 Thanks for stopping by – let’s keep building and learning together!
