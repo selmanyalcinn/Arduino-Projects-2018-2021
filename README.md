@@ -24,7 +24,7 @@ Python scripts using OpenCV for image processing experiments – blending comput
 ✅ **Patent**  
 My patent application and related documentation for the **Smoke Tracker Smart Watch** project.
 
-✅ **Arduino Saves**
+✅ **Arduino Saves** 
 All the Arduino sketches and code files I wrote for my projects are available here. This folder contains my complete Arduino code collection.
 
 ✅ **Smoke Tracker Smart Watch**  
