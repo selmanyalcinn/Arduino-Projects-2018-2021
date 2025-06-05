@@ -1,4 +1,4 @@
-# 🚀 Smoke-Tracker-Smart-Watch & Embedded Systems Projects
+# 🚀 Arduino-Projects-2018-2021
 
 Welcome to my repository! Here, you'll find a **collection of my embedded systems and Arduino projects** from **2018 to 2021**, as well as my first C++ experiments, OpenCV scripts, and the **Smoke Tracker Smart Watch** project – which is supported by a patent application.
 
