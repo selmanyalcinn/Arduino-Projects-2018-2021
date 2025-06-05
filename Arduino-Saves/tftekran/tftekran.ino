@@ -1,0 +1,66 @@
+/*
+   Rui Santos
+   Complete Project Details http://randomnerdtutorials.com
+*/
+
+// include TFT and SPI libraries
+#include <TFT.h>
+#include <SPI.h>
+
+// pin definition for Arduino UNO
+#define cs   10
+#define dc   9
+#define rst  8
+
+
+// create an instance of the library
+TFT TFTscreen = TFT(cs, dc, rst);
+int abc;
+char ebced2[4];
+void setup() {
+  Serial.begin(9600);
+  pinMode(2, INPUT);
+  pinMode(3, INPUT);
+  //initialize the library
+  TFTscreen.begin();
+
+  // clear the screen with a black background
+  TFTscreen.background(255, 255, 255);
+  //set the text size
+  TFTscreen.setTextSize(2);
+}
+
+void loop() {
+  String ebced = String(abc);
+  Serial.println(ebced);
+  delay(500);
+  int a;
+  int b;
+  b = digitalRead(3);
+  a = digitalRead(2);
+  if (a == 1) {
+    while (a == 1) {
+      a = digitalRead(2);
+    }
+    abc++;
+    ebced.toCharArray(ebced2,4);
+  }
+  if (b == 1) {
+    while (b == 1) {
+      b = digitalRead(3);
+    }
+    abc--;
+    ebced.toCharArray(ebced2,4);
+  }
+  //generate a random color
+  int redRandom = random(0, 255);
+  int greenRandom = random (0, 255);
+  int blueRandom = random (0, 255);
+  // set a random font color
+  TFTscreen.stroke(0, 0, 0);
+  TFTscreen.text(ebced2, 0, 25);
+  TFTscreen.begin();
+  delay(1);
+  TFTscreen.stroke(0, 0, 0);
+  TFTscreen.text(ebced2, 0, 25);
+}

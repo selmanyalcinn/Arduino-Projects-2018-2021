@@ -1,0 +1,39 @@
+#include <SoftwareSerial.h>
+SoftwareSerial s(D6,D5);
+int data;
+int sz;
+String virgul=",";
+void setup() {
+s.begin(9600);
+Serial.begin(9600);
+}
+ 
+void loop() {
+  
+  s.write("s");
+  if (s.available()>0)
+  {
+    data=s.read();
+    Serial.println("z");
+    Serial.println(data);
+    delay(10);
+    sz=s.read();
+    Serial.println("S");
+    Serial.println(sz);
+    delay(10);
+    int szx=s.read();
+    Serial.println("W");
+    Serial.println(szx);
+    delay(10);
+    int ceg=s.read();
+    Serial.println("Q");
+    Serial.println(ceg);
+    delay(10);
+    int heg=s.read();
+    Serial.println("AS");
+    Serial.println(heg);
+    delay(10);
+    String toplam=String(data)+virgul+String(sz)+virgul+String(szx)+virgul+String(ceg)+virgul+String(heg);
+
+  }
+ }

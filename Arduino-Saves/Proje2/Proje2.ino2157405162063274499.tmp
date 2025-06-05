@@ -1,0 +1,539 @@
+#include <TFT.h>  // Arduino LCD library
+#include <SPI.h>
+
+// pin definition for the Uno
+#define cs   10
+#define dc   9
+#define rst  8
+
+// pin definition for the Leonardo
+// #define cs   7
+// #define dc   0
+// #define rst  1
+
+// create an instance of the library
+TFT TFTscreen = TFT(cs, dc, rst);
+
+// char array to print to the screen
+char ebced[4];
+char ebced2[4];
+char ebced3[4];
+char ebcedsigara[4];
+char ebcedazalacakgun[4];
+char ebcedyazi[4];
+int bca;
+int buton1;
+int buton2;
+int buton3;
+int buton4;
+int buton5;
+int yon = 1;
+int yon2;
+int onay;
+int abc;
+int abc2;
+int x = 1;
+int sigara = 16;
+int azalacakgun;
+int azalacakgun2;
+int f;
+String yazi;
+void setup() {
+
+  pinMode(2, INPUT);
+  pinMode(3, INPUT);
+  pinMode(4, INPUT);
+  pinMode(5, INPUT);
+  pinMode(6, INPUT);
+  Serial.begin(9600);
+  TFTscreen.begin();
+  TFTscreen.background(255, 255, 255);
+  TFTscreen.setTextSize(2);
+}
+
+void loop() {
+  String y = String(abc);
+  y.toCharArray(ebced, 4);
+  String sz = String(azalacakgun);
+  sz.toCharArray(ebced3, 4);
+  String zeynep = String(sigara);
+  yazi.toCharArray(ebcedyazi, 4);
+  zeynep.toCharArray(ebcedsigara, 4);
+  buton1 = digitalRead(2);
+  buton2 = digitalRead(3);
+  buton3 = digitalRead(4);
+  buton4 = digitalRead(5);
+  buton5 = digitalRead(6);
+  if (buton1 == 1) {
+    while (buton1 == 1) {
+      buton1 = digitalRead(2);
+    }
+    if (onay == 0) {
+      yon++;
+    }
+    if (yon == 4 && onay == 1 && yon2 != 3 || yon == 1 && onay == 1) {
+      yon2++;
+      if (yon == 4 && onay == 1 && yon2 == 3) {
+        yon2 = 0;
+      }
+      if (yon != 4) {
+        if (yon2 == 2 && yon != 4) {
+          TFTscreen.stroke(255, 255, 255);
+          TFTscreen.text("<  Bagimlilik", 0, 0);
+          TFTscreen.line(0, 25, 200, 25);
+          TFTscreen.line(0, 26, 200, 26);
+          TFTscreen.text("Bugun Icilen:", 0, 35);
+          TFTscreen.text(ebcedsigara, 0, 55);
+          TFTscreen.text("Icilen Sigara ", 0, 80);
+          TFTscreen.text("Grafikleri", 0, 95);
+          TFTscreen.line(0, 10, 200, 10);
+          TFTscreen.line(0, 11, 200, 11);
+          TFTscreen.stroke(100, 100, 100);
+          TFTscreen.text("Bugun Icilen:", 0, 15);
+          TFTscreen.text(ebcedsigara, 0, 30);
+          TFTscreen.text("Icilen Sigara ", 0, 53);
+          TFTscreen.text("Grafikleri", 0, 67);
+        }
+        if (yon2 == 3 && onay == 1) {
+          TFTscreen.stroke(255, 255, 255);
+          TFTscreen.text("Bugun Icilen:", 0, 15);
+          TFTscreen.text(ebcedsigara, 0, 30);
+          TFTscreen.text("Icilen Sigara ", 0, 53);
+          TFTscreen.text("Grafikleri", 0, 67);
+          TFTscreen.line(0, 5, 200, 5);
+          TFTscreen.line(0, 6, 200, 6);
+          TFTscreen.text("Gunluk Icilen", 0, 90);
+          TFTscreen.text(ebced2, 0, 105);
+          TFTscreen.stroke(100, 100, 100);
+          TFTscreen.text("Icilen Sigara", 0, 0);
+          TFTscreen.text("Grafikleri", 0, 20);
+          TFTscreen.text("Gunluk Icilen", 0, 45);
+          TFTscreen.text(ebced2, 0, 60);
+        }
+        if (yon2 == 4) {
+          yon2 = 0;
+          TFTscreen.stroke(255, 255, 255);
+          TFTscreen.text("Icilen Sigara", 0, 0);
+          TFTscreen.text("Grafikleri", 0, 20);
+          TFTscreen.text("Gunluk Icilen", 0, 45);
+          TFTscreen.text(ebced2, 0, 50);
+          TFTscreen.text("Azaltilacagi", 0, 78);
+          TFTscreen.text("Gun", 0, 90);
+          TFTscreen.text(ebced2, 0, 110);
+        }
+      }
+    }
+  }
+  if (buton3 == 1) {
+    while (buton3 == 1) {
+      buton3 = digitalRead(4);
+    }
+    if (yon != 1) {
+      yon--;
+    }
+    if (yon == 1 && onay == 1) {
+      yon2--;
+      if (yon2 == 1) {
+        TFTscreen.stroke(255, 255, 255);
+        TFTscreen.line(0, 5, 200, 5);
+        TFTscreen.line(0, 6, 200, 6);
+        TFTscreen.text("Bugun Icilen:", 0, 15);
+        TFTscreen.text(ebcedsigara, 0, 30);
+        TFTscreen.text("Icilen Sigara ", 0, 53);
+        TFTscreen.text("Grafikleri", 0, 67);
+        TFTscreen.text("Gunluk Icilen", 0, 90);
+        TFTscreen.text(ebced2, 0, 105);
+      }
+      if (yon2 == 2) {
+        TFTscreen.stroke(255, 255, 255);
+        TFTscreen.text("Icilen Sigara", 0, 0);
+        TFTscreen.text("Grafikleri", 0, 20);
+        TFTscreen.text("Gunluk Icilen", 0, 45);
+        TFTscreen.text(ebced2, 0, 50);
+        TFTscreen.text("Azaltilacagi", 0, 78);
+        TFTscreen.text("Gun", 0, 90);
+        TFTscreen.text(ebcedazalacakgun, 0, 110);
+        TFTscreen.stroke(100, 100, 100);
+        TFTscreen.text("Bugun Icilen:", 0, 15);
+        TFTscreen.text(ebcedsigara, 0, 30);
+        TFTscreen.text("Icilen Sigara ", 0, 53);
+        TFTscreen.text("Grafikleri", 0, 67);
+      }
+    }
+  }
+  if (buton2 == 1) {
+    while (buton2 == 1) {
+      buton2 = digitalRead(3);
+    }
+    onay++;
+    if (yon == 1) {
+      TFTscreen.stroke(255, 255, 255);
+      TFTscreen.text("Bagimlilik", 0, 15);
+      TFTscreen.line(0, 35, 500, 35);
+      TFTscreen.line(0, 36, 500, 36);
+      TFTscreen.text("Kalp Sagligi", 0, 45);
+      TFTscreen.line(0, 67, 500, 67);
+      TFTscreen.line(0, 68, 500, 68);
+      TFTscreen.text("Hava Kalitesi", 0, 77);
+      TFTscreen.line(0, 99, 500, 99);
+      TFTscreen.line(0, 100, 500, 100);
+      TFTscreen.text("Ag Baglantisi", 0, 109);
+      TFTscreen.line(0, 131, 500, 121);
+      TFTscreen.line(0, 131, 500, 122);
+    }
+    if (yon == 4) {
+      TFTscreen.stroke(255, 255, 255);
+      TFTscreen.text("Bagimlilik", 0, 15);
+      TFTscreen.line(0, 35, 500, 35);
+      TFTscreen.line(0, 36, 500, 36);
+      TFTscreen.text("Kalp Sagligi", 0, 45);
+      TFTscreen.line(0, 67, 500, 67);
+      TFTscreen.line(0, 68, 500, 68);
+      TFTscreen.text("Hava Kalitesi", 0, 77),
+                     TFTscreen.line(0, 99, 500, 99);
+      TFTscreen.line(0, 100, 500, 100);
+      TFTscreen.text("Ag Baglantisi", 0, 109);
+      TFTscreen.line(0, 131, 500, 121);
+      TFTscreen.line(0, 131, 500, 122);
+    }
+    if (yon == 4 && onay == 1 && yon2 == 0 || yon == 4 && onay == 1 && yon2 == 1) {
+      TFTscreen.stroke(255, 255, 255);
+      TFTscreen.text("Bagimlilik", 0, 15);
+      TFTscreen.line(0, 35, 500, 35);
+      TFTscreen.line(0, 36, 500, 36);
+      TFTscreen.text("Kalp Sagligi", 0, 45);
+      TFTscreen.line(0, 67, 500, 67);
+      TFTscreen.line(0, 68, 500, 68);
+      TFTscreen.text("Hava Kalitesi", 0, 77),
+                     TFTscreen.line(0, 99, 500, 99);
+      TFTscreen.line(0, 100, 500, 100);
+      TFTscreen.text("Ag Baglantisi", 0, 109);
+      TFTscreen.line(0, 131, 500, 121);
+      TFTscreen.line(0, 131, 500, 122);
+    }
+    if (onay == 2 && yon2 != 1 && yon != 4) {
+      onay = 0;
+      yon2 = 0;
+      if (yon2 == 0 || yon2 == 1) {
+        TFTscreen.stroke(255, 255, 255);
+        TFTscreen.text("<  Bagimlilik", 0, 0);
+        TFTscreen.line(0, 25, 200, 25);
+        TFTscreen.line(0, 26, 200, 26);
+        TFTscreen.text("Bugun Icilen:", 0, 35);
+        TFTscreen.text(ebcedsigara, 0, 55);
+        TFTscreen.text("Icilen Sigara ", 0, 80);
+        TFTscreen.text("Grafikleri", 0, 95);
+        TFTscreen.stroke(100, 100, 100);
+      }
+      if (yon2 == 2 && yon != 4) {
+        TFTscreen.stroke(255, 255, 255);
+        TFTscreen.text("Bugun Icilen:", 0, 15);
+        TFTscreen.text(ebcedsigara, 0, 30);
+        TFTscreen.text("Icilen Sigara ", 0, 53);
+        TFTscreen.text("Grafikleri", 0, 67);
+        TFTscreen.line(0, 5, 200, 5);
+        TFTscreen.line(0, 6, 200, 6);
+        TFTscreen.text("Gunluk Icilen", 0, 90);
+        TFTscreen.text(ebced2, 0, 105);
+        yon2 = 0;
+      }
+      if (yon2 == 3 && yon != 4) {
+        TFTscreen.stroke(255, 255, 255);
+        TFTscreen.text("Icilen Sigara", 0, 0);
+        TFTscreen.text("Grafikleri", 0, 20);
+        TFTscreen.text("Gunluk Icilen", 0, 45);
+        TFTscreen.text(ebced2, 0, 60);
+        TFTscreen.text("Azaltilacagi", 0, 78);
+        TFTscreen.text("Gun", 0, 90);
+        TFTscreen.text(ebcedazalacakgun, 0, 110);
+        yon2 = 0;
+      }
+    }
+    if (yon == 4 && onay == 2 && yon2 == 1) {
+      TFTscreen.stroke(255, 255, 255);
+      TFTscreen.text("< Ag Baglantisi", 0, 5);
+      TFTscreen.line(0, 25, 200, 25);
+      TFTscreen.line(0, 26, 200, 26);
+      TFTscreen.text("Ag Adi >", 0, 40);
+      TFTscreen.text("Ag Sifresi >", 0, 70);
+    }
+  }
+  if (yon == 1 && onay == 1) {
+    if (yon2 == 2 || yon2 == 3) {
+      if (buton4 == 1) {
+        while (buton4 == 1) {
+          buton4 = digitalRead(5);
+        }
+        if (yon2 != 3) {
+          abc++;
+          bca = abc;
+          String z = String(bca);
+          z.toCharArray(ebced2, 4);
+          TFTscreen.stroke(0, 0, 0);
+          TFTscreen.text("Gunluk Icilen", 0, 90);
+          if (abc != 0) {
+            TFTscreen.stroke(255, 255, 255);
+            TFTscreen.text(ebced, 0, 105);
+          }
+        }
+        if (yon2 == 3) {
+          azalacakgun++;
+          azalacakgun2 = azalacakgun;
+          String s = String(azalacakgun);
+          s.toCharArray(ebcedazalacakgun, 4);
+          TFTscreen.stroke(255, 255, 255);
+          TFTscreen.text(ebced3, 0, 110);
+
+        }
+      }
+
+      if (buton5 == 1) {
+        while (buton5 == 1) {
+          buton5 = digitalRead(6);
+        }
+        if (yon2 != 3) {
+          abc--;
+          bca = abc;
+          String z = String(bca);
+          z.toCharArray(ebced2, 4);
+          TFTscreen.stroke(255, 255, 255);
+          TFTscreen.text(ebced, 0, 105);
+          if (abc < 0) {
+            abc++;
+            bca = abc;
+            String z = String(bca);
+            z.toCharArray(ebced2, 4);
+
+          }
+        }
+        if (yon2 == 3) {
+          azalacakgun--;
+          azalacakgun2 = azalacakgun;
+          String s = String(azalacakgun);
+          s.toCharArray(ebcedazalacakgun, 4);
+          TFTscreen.stroke(255, 255, 255);
+          TFTscreen.text(ebced3, 0, 110);
+          TFTscreen.stroke(255, 255, 255);
+          TFTscreen.text(ebced, 0, 105);
+          if (azalacakgun < 0) {
+            azalacakgun++;
+            azalacakgun2 = azalacakgun;
+            String s = String(azalacakgun);
+            s.toCharArray(ebcedazalacakgun, 4);
+          }
+        }
+      }
+    }
+    if (yon2 == 0 && yon != 4) {
+      TFTscreen.stroke(0, 0, 0);
+      TFTscreen.text("<  Bagimlilik", 0, 0);
+      TFTscreen.line(0, 25, 200, 25);
+      TFTscreen.line(0, 26, 200, 26);
+      TFTscreen.text("Bugun Icilen:", 0, 35);
+      TFTscreen.text(ebcedsigara, 0, 55);
+      TFTscreen.stroke(100, 100, 100);
+      TFTscreen.text("Icilen Sigara ", 0, 80);
+      TFTscreen.text("Grafikleri", 0, 95);
+      TFTscreen.stroke(100, 100, 100);
+    }
+    if (yon2 == 1 && yon != 4) {
+      TFTscreen.stroke(0, 0, 0);
+      TFTscreen.text("<  Bagimlilik", 0, 0);
+      TFTscreen.line(0, 25, 200, 25);
+      TFTscreen.line(0, 26, 200, 26);
+      TFTscreen.stroke(100, 100, 100);
+      TFTscreen.text("Bugun Icilen:", 0, 35);
+      TFTscreen.text(ebcedsigara, 0, 55);
+      TFTscreen.stroke(0, 0, 0);
+      TFTscreen.text("Icilen Sigara ", 0, 80);
+      TFTscreen.text("Grafikleri", 0, 95);
+      TFTscreen.stroke(100, 100, 100);
+    }
+    if (yon2 == 2 && yon != 4) {
+      TFTscreen.stroke(0, 0, 0);
+      TFTscreen.line(0, 5, 200, 5);
+      TFTscreen.line(0, 6, 200, 6);
+      TFTscreen.text("Gunluk Icilen", 0, 90);
+      TFTscreen.text(ebced2, 0, 105);
+    }
+    if (yon2 == 3 && yon != 4) {
+      TFTscreen.stroke(0, 0, 0);
+      TFTscreen.text("Azaltilacagi", 0, 78);
+      TFTscreen.text("Gun", 0, 90);
+      TFTscreen.text(ebcedazalacakgun, 0, 110);
+    }
+  }
+  if (yon == 4 && onay == 1 || onay == 2) {
+    if (yon2 == 0) {
+      TFTscreen.stroke(0, 0, 0);
+      TFTscreen.text("< Ag Baglantisi", 0, 5);
+      TFTscreen.line(0, 25, 200, 25);
+      TFTscreen.line(0, 26, 200, 26);
+      TFTscreen.stroke(100, 100, 100);
+      TFTscreen.text("Ag Adi >", 0, 40);
+      TFTscreen.text("Ag Sifresi >", 0, 70);
+    }
+    if (yon2 == 1 && onay == 1) {
+      TFTscreen.stroke(0, 0, 0);
+      TFTscreen.text("< Ag Baglantisi", 0, 5);
+      TFTscreen.line(0, 25, 200, 25);
+      TFTscreen.line(0, 26, 200, 26);
+      TFTscreen.text("Ag Adi >", 0, 40);
+      TFTscreen.stroke(100, 100, 100);
+      TFTscreen.text("Ag Sifresi >", 0, 70);
+    }
+    if (yon2 == 1 && onay == 2) {
+      yazi.toCharArray(ebcedyazi, 4);
+      TFTscreen.stroke(0, 0, 0);
+      TFTscreen.text("Ag Adi", 40, 0);
+      TFTscreen.text(ebcedyazi, 0, 20);
+      TFTscreen.line(0, 40, 500, 40);
+      TFTscreen.line(0, 41, 500, 41);
+      TFTscreen.line(0, 40, 0, 150);
+      TFTscreen.line(1, 40, 1, 150);
+      TFTscreen.line(159,40,159,150);
+      TFTscreen.line(158,40,158,150);
+      TFTscreen.line(18,40,18,60);
+      TFTscreen.line(19,40,19,60);
+      TFTscreen.line(35,40,35,60);
+      TFTscreen.line(36,40,36,60);
+      TFTscreen.line(50,40,50,60);
+      TFTscreen.line(51,40,51,60);
+      TFTscreen.line(65,40,65,60);
+      TFTscreen.line(66,40,66,60);
+      TFTscreen.line(80,40,80,60);
+      TFTscreen.line(81,40,81,60);
+      TFTscreen.line(95,40,95,60);
+      TFTscreen.line(96,40,96,60);
+      TFTscreen.line(110,40,110,60);
+      TFTscreen.line(111,40,111,60);
+      TFTscreen.line(125,40,125,60);
+      TFTscreen.line(126,40,126,60);
+      TFTscreen.line(140,40,140,60);
+      TFTscreen.line(141,40,141,60);
+      TFTscreen.line(0,60,500,60);
+      TFTscreen.line(0,60,500,60);
+      TFTscreen.line(18,60,18,80);
+      TFTscreen.line(19,60,19,80);
+      TFTscreen.line(35,60,35,80);
+      TFTscreen.line(36,60,36,80);
+      TFTscreen.line(50,60,50,80);
+      TFTscreen.line(51,60,51,80);
+      TFTscreen.line(65,60,65,80);
+      TFTscreen.line(66,60,66,80);
+      TFTscreen.line(80,60,80,80);
+      TFTscreen.line(81,60,81,80);
+      TFTscreen.line(95,60,95,80);
+      TFTscreen.line(96,60,96,80);
+      TFTscreen.line(110,60,110,80);
+      TFTscreen.line(111,60,111,80);
+      TFTscreen.line(125,60,125,80);
+      TFTscreen.line(126,60,126,80);
+      TFTscreen.line(140,60,140,80);
+      TFTscreen.line(141,60,141,80);
+      TFTscreen.text("a",6,42);
+      TFTscreen.stroke(100,100,100);
+      TFTscreen.text("b",23,42);
+      TFTscreen.text("c",38,42);
+      TFTscreen.text("d",53,42);
+      TFTscreen.text("e",68,42);
+      TFTscreen.text("f",83,42);
+      TFTscreen.text("g",98,42);
+      TFTscreen.text("h",113,42);
+      TFTscreen.text("i",128,42);
+      TFTscreen.text("j",143,42);
+      TFTscreen.text("k",6,64);
+      TFTscreen.text("l",23,64);
+      TFTscreen.text("m",38,64);
+      TFTscreen.text("n",53,64);
+      TFTscreen.text("o",68,64);
+      TFTscreen.text("p",83,64);
+      TFTscreen.text("q",98,64);
+      TFTscreen.text("r",113,64);
+      TFTscreen.text("s",128,64);
+      TFTscreen.text("t",143,64);
+    }
+    if (yon2 == 2) {
+      TFTscreen.stroke(0, 0, 0);
+      TFTscreen.text("< Ag Baglantisi", 0, 5);
+      TFTscreen.line(0, 25, 200, 25);
+      TFTscreen.line(0, 26, 200, 26);
+      TFTscreen.stroke(100, 100, 100);
+      TFTscreen.text("Ag Adi >", 0, 40);
+      TFTscreen.stroke(0, 0, 0);
+      TFTscreen.text("Ag Sifresi >", 0, 70);
+    }
+  }
+  if (yon == 1 && onay == 0) {
+    TFTscreen.stroke(0, 0, 0);
+    TFTscreen.text("Bagimlilik", 0, 15);
+    TFTscreen.stroke(100, 100, 100);
+    TFTscreen.line(0, 35, 500, 35);
+    TFTscreen.line(0, 36, 500, 36);
+    TFTscreen.text("Kalp Sagligi", 0, 45);
+    TFTscreen.line(0, 67, 500, 67);
+    TFTscreen.line(0, 68, 500, 68);
+    TFTscreen.text("Hava Kalitesi", 0, 77),
+                   TFTscreen.line(0, 99, 500, 99);
+    TFTscreen.line(0, 100, 500, 100);
+    TFTscreen.text("Ag Baglantisi", 0, 109);
+    TFTscreen.line(0, 131, 500, 121);
+    TFTscreen.line(0, 131, 500, 122);
+  }
+  if (yon == 2 && onay == 0) {
+
+    TFTscreen.stroke(100, 100, 100);
+    TFTscreen.text("Bagimlilik", 0, 15);
+    TFTscreen.line(0, 35, 500, 35);
+    TFTscreen.line(0, 36, 500, 36);
+    TFTscreen.stroke(0, 0, 0);
+    TFTscreen.text("Kalp Sagligi", 0, 45);
+    TFTscreen.stroke(100, 100, 100);
+    TFTscreen.line(0, 67, 500, 67);
+    TFTscreen.line(0, 68, 500, 68);
+    TFTscreen.text("Hava Kalitesi", 0, 77),
+                   TFTscreen.line(0, 99, 500, 99);
+    TFTscreen.line(0, 100, 500, 100);
+    TFTscreen.text("Ag Baglantisi", 0, 109);
+    TFTscreen.line(0, 131, 500, 121);
+    TFTscreen.line(0, 131, 500, 122);
+  }
+  if (yon == 3 && onay == 0) {
+    TFTscreen.stroke(100, 100, 100);
+    TFTscreen.text("Bagimlilik", 0, 15);
+    TFTscreen.line(0, 35, 500, 35);
+    TFTscreen.line(0, 36, 500, 36);
+    TFTscreen.text("Kalp Sagligi", 0, 45);
+    TFTscreen.line(0, 67, 500, 67);
+    TFTscreen.line(0, 68, 500, 68);
+    TFTscreen.stroke(0, 0, 0);
+    TFTscreen.text("Hava Kalitesi", 0, 77);
+    TFTscreen.stroke(100, 100, 100);
+    TFTscreen.line(0, 99, 500, 99);
+    TFTscreen.line(0, 100, 500, 100);
+    TFTscreen.text("Ag Baglantisi", 0, 109);
+    TFTscreen.line(0, 131, 500, 121);
+    TFTscreen.line(0, 131, 500, 122);
+
+  }
+  if (yon == 4 && onay == 0) {
+    TFTscreen.stroke(100, 100, 100);
+    TFTscreen.text("Bagimlilik", 0, 15);
+    TFTscreen.line(0, 35, 500, 35);
+    TFTscreen.line(0, 36, 500, 36);
+    TFTscreen.text("Kalp Sagligi", 0, 45);
+    TFTscreen.line(0, 67, 500, 67);
+    TFTscreen.line(0, 68, 500, 68);
+    TFTscreen.text("Hava Kalitesi", 0, 77),
+                   TFTscreen.line(0, 99, 500, 99);
+    TFTscreen.line(0, 100, 500, 100);
+    TFTscreen.stroke(0, 0, 0);
+    TFTscreen.text("Ag Baglantisi", 0, 109);
+    TFTscreen.stroke(100, 100, 100);
+    TFTscreen.line(0, 131, 500, 121);
+    TFTscreen.line(0, 131, 500, 122);
+  }
+  if (yon == 5) {
+    yon = 1;
+  }
+}

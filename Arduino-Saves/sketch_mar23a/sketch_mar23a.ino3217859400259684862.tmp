@@ -1,0 +1,77 @@
+#include <TFT.h>  // Arduino LCD library
+#include <SPI.h>
+
+// pin definition for the Uno
+#define cs   10
+#define dc   9
+#define rst  8
+
+// pin definition for the Leonardo
+// #define cs   7
+// #define dc   0
+// #define rst  1
+
+// create an instance of the library
+TFT TFTscreen = TFT(cs, dc, rst);
+
+int buton1;
+int buton2;
+int buton3;
+int abc;
+char ebced[4];
+int z;
+String sz;
+String szx;
+int xy;
+void setup() {
+  Serial.begin(9600);
+  pinMode(2, INPUT);
+  pinMode(3, INPUT);
+  // Put this line at the beginning of every sketch that uses the GLCD:
+  TFTscreen.begin();
+
+  // clear the screen with a black background
+  TFTscreen.background(0, 0, 0);
+
+  // write the static text to the screen
+  // set the font color to white
+  TFTscreen.stroke(255, 255, 255);
+  // set the font size
+  TFTscreen.setTextSize(0);
+  // write the text to the top left corner of the screen
+  // ste the font size very large for the loop
+  TFTscreen.setTextSize(2);
+}
+
+void loop() {
+  buton1 = digitalRead(2);
+  buton2 = digitalRead(3);
+  buton3 = digitalRead(4);
+  if (buton1 == 1 ) {
+    while (buton1 == 1) {
+      buton1 = digitalRead(2);
+    }
+    abc++;
+    TFTscreen.stroke(255, 255, 255);
+    TFTscreen.text(ebced, 0, 20);
+    TFTscreen.stroke(0, 0, 0);
+    TFTscreen.text(ebced, 0, 20);
+  }
+  if (buton2 == 1) {
+    while (buton2 == 1) {
+      buton2 = digitalRead(3);
+    }
+    abc--;
+    TFTscreen.stroke(255, 255, 255);
+    TFTscreen.text(ebced, 0, 20);
+    TFTscreen.stroke(0, 0, 0);
+    TFTscreen.text(ebced, 0, 20);
+  }
+  String y = String(abc);
+  y.toCharArray(ebced, 4);
+  if (buton1 == 0) {
+    TFTscreen.stroke(255, 255, 255);
+    TFTscreen.text("Gunluk Icilen",0,0);
+    TFTscreen.text(ebced, 0, 20);
+  }
+}
